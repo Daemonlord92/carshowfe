@@ -37,8 +37,8 @@ const CarList = () => {
                     </TableHead>
                     <TableBody>
                         {
-                            data?.map(car => (
-                                <CarRow data={car}/>
+                            data?.map((car, index) => (
+                                <CarRow key={index} data={car}/>
                             ))
                         }
                     </TableBody>

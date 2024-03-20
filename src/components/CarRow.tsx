@@ -1,10 +1,9 @@
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
+import { Car } from '../type/Car';
 
 const CarRow = (props:
-     { data:
-        { id: number; make: string; model: string; vin: string }
-     }
+     { data:Car}
      ) => {
     const {id, make, model, vin} = props.data
 
