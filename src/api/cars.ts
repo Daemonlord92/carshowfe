@@ -16,3 +16,8 @@ export const postNewCar = async (newCar:Car): Promise<string> => {
     })
     return data
 }
+
+export const deleteCar = async (id:number|undefined): Promise<string> => {
+    const { data } = await axios.delete('http://localhost:8080/api/v1/car/' + id)
+    return data
+}
