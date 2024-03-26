@@ -10,7 +10,9 @@ export const postNewCar = async (newCar:Car): Promise<string> => {
     console.log("MJM:l10:postNewCar" + newCar.make +newCar.model)
     const { data } = await axios.post('http://localhost:8080/api/v1/car/', newCar,{
         headers: {
-            "Context-Type" : "application/json"
+            "Context-Type" : "application/json",
+            "Authorization" : "Bearer " + sessionStorage.getItem("Authorization"),
+            "Allow-Control-Allow-Origin": "http://localhost:5173/"
         }
         
     })
@@ -18,11 +20,23 @@ export const postNewCar = async (newCar:Car): Promise<string> => {
 }
 
 export const deleteCar = async (id:number|undefined): Promise<string> => {
-    const { data } = await axios.delete('http://localhost:8080/api/v1/car/' + id)
+    const { data } = await axios.delete('http://localhost:8080/api/v1/car/' + id, {
+        headers: {
+            "Context-Type" : "application/json",
+            "Authorization" : "Bearer " + sessionStorage.getItem("Authorization"),
+            "Allow-Control-Allow-Origin": "http://localhost:5173/"
+        }
+    })
     return data
 }
 
 export const updateCar = async (car:Car): Promise<string> => {
-    const { data } = await axios.put('http://localhost:8080/api/v1/car/' + car.id, car)
+    const { data } = await axios.put('http://localhost:8080/api/v1/car/' + car.id, car, {
+        headers: {
+            "Context-Type" : "application/json",
+            "Authorization" : "Bearer " + sessionStorage.getItem("Authorization"),
+            "Allow-Control-Allow-Origin": "http://localhost:5173/"
+        }
+    })
     return data
 }
